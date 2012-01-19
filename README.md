@@ -36,15 +36,19 @@ Retrieve an entire table as an array of objects:
 
  Retrieve a selection from a table, all the records with field1_name == value1
 
-    $rows = $mysql->select('table_name', array('field1_name', 'field2_name', 'field3_name'), array('field1_name'=>'value1'));
+    $rows = $mysql->select('table_name', array('field1_name', 'field2_name', 'field3_name'),
+                                         array('field1_name'=>'value1'));
 
 Multiple WHERE conditions gets AND between them:
 
-    $rows = $mysql->select('table_name', array('field1_name', 'field2_name', 'field3_name'), array('field1_name'=>'value1', 'field2_name'=>'value2'));
+    $rows = $mysql->select('table_name', array('field1_name', 'field2_name', 'field3_name'),
+                                         array('field1_name'=>'value1', 'field2_name'=>'value2'));
 
 But what if you want to use something other than equality in your conditions?
 
-    $rows = $mysql->select('table_name', array('field1_name', 'field2_name', 'field3_name'), array('field1_name'=>'value1', 'field2_name'=>'value2'), array('field1_name'=>'>', 'field2_name'=>'='));
+    $rows = $mysql->select('table_name', array('field1_name', 'field2_name', 'field3_name'),
+                                         array('field1_name'=>'value1', 'field2_name'=>'value2'),
+                                         array('field1_name'=>'>', 'field2_name'=>'='));
 
 This expands to WHERE `field1_name`>'value1' AND `field2_name`='value2'
 
@@ -61,7 +65,8 @@ This expands to WHERE `field1_name`>'value1' AND `field2_name`='value2'
 
 ### Updating
 
-    $success = $mysql->update('table_name', array('field1_name'=>'value1', 'field2_name'=>'value2', 'field3_name'=>'value3'), array('field1_name'=>'value_old'));
+    $success = $mysql->update('table_name', array('field1_name'=>'value1', 'field2_name'=>'value2', 'field3_name'=>'value3'),
+                                            array('field1_name'=>'value_old'));
 
     if (!$success) {
         die("Cannot update records: ".$mysql->error);
