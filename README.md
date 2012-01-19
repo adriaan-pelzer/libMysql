@@ -7,6 +7,7 @@ Installation
 ------------
 
 Place the following two files anywhere from where you can "include" or "require" them:
+
 * class.mysql.php
 * config.mysql.php
 
