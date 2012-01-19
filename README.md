@@ -50,7 +50,7 @@ But what if you want to use something other than equality in your conditions?
                                          array('field1_name'=>'value1', 'field2_name'=>'value2'),
                                          array('field1_name'=>'>', 'field2_name'=>'='));
 
-This expands to WHERE `field1_name`>'value1' AND `field2_name`='value2'
+This expands to WHERE field1_name>'value1' AND field2_name='value2'
 
 ### Inserting
 
