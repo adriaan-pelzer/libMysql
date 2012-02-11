@@ -96,15 +96,15 @@ class Mysql {
 
                 if ($field_string == "") {
                     if ($value === NULL) {
-                        $field_string = $field." ".$comparator." NULL";
+                        $field_string = "`".$field."`".$comparator."NULL";
                     } else {
-                        $field_string = $field." ".$comparator." ".$value;
+                        $field_string = "`".$field."`".$comparator."'".mysql_real_escape_string($value)."'";
                     }
                 } else {
                     if ($value === NULL) {
-                        $field_string .= " AND ".$field." ".$comparator." NULL";
+                        $field_string .= " AND `".$field."`".$comparator."NULL";
                     } else {
-                        $field_string .= " AND ".$field." ".$comparator." ".$value;
+                        $field_string .= " AND `".$field."`".$comparator."'".mysql_real_escape_string($value)."'";
                     }
                 }
             }
@@ -124,13 +124,13 @@ class Mysql {
                     if ($value === NULL) {
                         $update_string = "`".$field."`=NULL";
                     } else {
-                        $update_string = "`".$field."`='".mysql_real_escape_string ($value)."'";
+                        $update_string = "`".$field."`='".mysql_real_escape_string($value)."'";
                     }
                 } else {
                     if ($value === NULL) {
                         $update_string .= ",`".$field."`=NULL";
                     } else {
-                        $update_string .= ",`".$field."`='".mysql_real_escape_string ($value)."'";
+                        $update_string .= ",`".$field."`='".mysql_real_escape_string($value)."'";
                     }
                 }
             }
@@ -161,8 +161,6 @@ class Mysql {
             $this->error = "Cannot run query: ".$query.": ".mysql_error ($this->msql);
             return FALSE;
         }
-
-        //echo $query."\n";
 
         $this->inserted_id = -1;
 
